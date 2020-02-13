@@ -6,7 +6,7 @@ const SignedInLinks = () => {
     return(
         <ul className='right'>
             {/* will fix navlink routing later */}
-            <li><NavLink to='/'>Create New Note</NavLink></li>
+            <li><NavLink to='/create'>Create New Note</NavLink></li>
             <li><NavLink to='/'>Logout</NavLink></li>
 
             {/* user icon logged in initials*/}
