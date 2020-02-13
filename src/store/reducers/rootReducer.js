@@ -1,7 +1,7 @@
 import authReducer from './authReducer'
-import projectReducer from './projectReducer'
-import { combineReducers } from 'redux'
 import noteReducer from './noteReducer'
+import { combineReducers } from 'redux'
+
 
 const rootReducer = combineReducers({
     auth: authReducer,
