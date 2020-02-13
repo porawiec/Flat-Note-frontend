@@ -26,12 +26,12 @@ class SignUp extends Component {
                 <form onSubmit={this.handleSubmit} className='white'> {/* will handle onSubmit later */}
                     <h5 className='grey-text text-darken-3'>Create New Account</h5>
                     <div className='input-field'>
-                        <label for='username'>Username</label>
+                        <label htmlFor='username'>Username</label>
                         <input type='text' id='username' onChange={this.handleChange}></input> {/* will handle onChange of username field later */}
                     </div>
                     <h5 className='grey-text text-darken-3'>Password</h5>
                     <div className='input-field'>
-                        <label for='password'>Password</label>
+                        <label htmlFor='password'>Password</label>
                         <input type='password' id='password' onChange={this.handleChange}></input> {/* will handle onChange of password field later */}
                     </div>
                     <div className='input-field'>

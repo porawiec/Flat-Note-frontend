@@ -5,6 +5,7 @@ import Dashboard from './components/dashboard/Dashboard'
 import NoteDetails from './components/notes/NoteDetails'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
+import CreateNote from './components/notes/CreateNote'
 
 
 class App extends Component {
@@ -23,6 +24,7 @@ class App extends Component {
             <Route path='/note/:id' component={NoteDetails} />
             <Route path='/signin' component={SignIn} />
             <Route path='/signup' component={SignUp} />
+            <Route path='/create' component={CreateNote} />
           </Switch>
         </div>
       </BrowserRouter>
