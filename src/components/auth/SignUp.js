@@ -23,16 +23,16 @@ class SignUp extends Component {
     render() {
         return (
             <div className='container'>
-                <form onSubmit={this.handleSubmit} className='white'> {/* will handle onSubmit later */}
+                <form onSubmit={this.handleSubmit} className='white'>
                     <h5 className='grey-text text-darken-3'>Create New Account</h5>
                     <div className='input-field'>
                         <label htmlFor='username'>Username</label>
-                        <input type='text' id='username' onChange={this.handleChange}></input> {/* will handle onChange of username field later */}
+                        <input type='text' id='username' onChange={this.handleChange}></input>
                     </div>
                     <h5 className='grey-text text-darken-3'>Password</h5>
                     <div className='input-field'>
                         <label htmlFor='password'>Password</label>
-                        <input type='password' id='password' onChange={this.handleChange}></input> {/* will handle onChange of password field later */}
+                        <input type='password' id='password' onChange={this.handleChange}></input>
                     </div>
                     <div className='input-field'>
                         <button className='btn cyan lighten-1'>Sign Up</button>
