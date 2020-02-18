@@ -9,11 +9,7 @@ import CreateNote from './components/notes/CreateNote'
 
 
 class App extends Component {
-  state = {
-    notes: [
-      {id: 1, title: 'some note', description: 'some note'}
-    ]
-  }
+
   render(){
     return (
       <BrowserRouter>

@@ -2,11 +2,17 @@ import React, { Component } from 'react'
 import Notifications from './Notifications'
 import NoteList from '../notes/NoteList'
 import { connect } from 'react-redux'
+import getNotes from '../../store/actions/noteActions'
 
 class Dashboard extends Component {
 
+    // componentDidMount() {
+    //     const {getNotes} = this.props
+    //     getNotes()
+    // }
+
     render(){
-        // console.log(this.props)
+        console.log('dash props',this.props)
         const { notes } = this.props
 
         return(
@@ -25,7 +31,7 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
+    console.log('dash map state to props', state)
     return {
         notes: state.note.notes
     }

@@ -8,18 +8,33 @@ const initState = {
 
 const noteReducer = (state = initState, action) => {
     switch (action.type) {
-        case 'CREATE_NOTE':
-            console.log('created note', action.note)
-            return state
-        case 'CREATE_NOTE_ERROR':
-            console.log('create note error', action.err)
-            return state
         case 'GET_NOTES':
-            console.log('received notes', action.note)
-            return state
+            console.log('received notes', action.notes)
+            return {
+                ...state,
+                notes: action.notes
+            }
+
         case 'GET_NOTES_ERROR':
             console.log('received notes error', action.err)
             return state
+
+
+        case 'CREATE_NOTE':
+            console.log('created note', action.note)
+            return ([
+                ...state,
+                {
+                    id: action.id,
+                    title: action.title,
+                    description: action.description
+                }
+            ])
+
+        case 'CREATE_NOTE_ERROR':
+            console.log('create note error', action.err)
+            return state
+
         default:
             return state
     }

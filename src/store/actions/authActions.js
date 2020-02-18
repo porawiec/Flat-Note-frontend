@@ -1,14 +1,24 @@
 export const signIn = (credentials) => {
     return (dispatch, getState) => {
-        // make async call to database
-        // will have:
-        // username: someusername
-        // user_id: 12345
+
+        const reqObj = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'Application/json'
+            },
+            body: JSON.stringify(credentials)
+        }
     
-        fetch('http://localhost:3000/users')
-            .then((users) => {
-                dispatch({ type: 'LOGIN_SUCCESS', users: users})
-            }).catch((err) => {
+        fetch('http://localhost:3000/auth', reqObj)
+        .then(res => res.json())
+        .then(res => {
+            if(res.error) {
+                throw(res.error)
+            }
+            dispatch({ type: 'LOGIN_SUCCESS', user: res.user})
+            return res.user
+            })
+            .catch((err) => {
                 dispatch({ type: 'LOGIN_ERROR', err})
             })
         }
@@ -18,9 +28,35 @@ export const signOut = () => {
     return (dispatch, getState) => {
 
 // setState of user to '' ?
-        fetch('http://localhost:3000/users')
+        fetch('http://localhost:3000/auth]')
             .then((users) => {
                 dispatch({ type: 'SIGNOUT_SUCCESS', users: users})
+            })
+        }
+}
+
+export const signUp = (credentials) => {
+    return (dispatch, getState) => {
+
+        const reqObj = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'Application/json'
+            },
+            body: JSON.stringify(credentials)
+        }
+    
+        fetch('http://localhost:3000/users', reqObj)
+        .then(res => res.json())
+        .then(res => {
+            if(res.error) {
+                throw(res.error)
+            }
+            dispatch({ type: 'SIGN_UP_SUCCESS', user: res.user})
+            return res.user
+            })
+            .catch((err) => {
+                dispatch({ type: 'SIGN_UP_ERROR', err})
             })
         }
 }

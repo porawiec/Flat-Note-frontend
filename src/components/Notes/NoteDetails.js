@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 const NoteDetails = (props) => {
     const id = props.match.params.id
@@ -24,7 +25,18 @@ const NoteDetails = (props) => {
     )
 }
 
-export default NoteDetails
+const mapStateToProps = (state, ownProps) => {
+    let id = ownProps.match.params.id
+    // const notes = this.props.notes??????
+    // const note = notes ? notes[id] : null
+        return {
+            note: state.note.notes.find((note) => {return (
+            note.id === id)}
+            )
+        }
+}
+
+export default connect(mapStateToProps)(NoteDetails)
 
 /////////////////////////////////////////////////////////////////
 
