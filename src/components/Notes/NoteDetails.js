@@ -13,11 +13,10 @@ const NoteDetails = (props) => {
             <div className='card z-depth-0'>
                 <div className='card-content'>
                     <span className='card-title'>
-                        Note Title - {id}
-                        {/* dynamic Note Title would exist here */}
+                        {props.note.title} - {id}
                     </span>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod sunt ut assumenda ullam, sint architecto, hic quos necessitatibus tempore repellat omnis accusamus adipisci rerum voluptatum ducimus voluptate nostrum magni error.
+                        {props.note.description}
                     </p>
                 </div>
                 <div className='card-action grey lighten-4 grey-text'>

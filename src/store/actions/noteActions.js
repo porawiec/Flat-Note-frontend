@@ -1,4 +1,4 @@
-export const getNotes = () => {
+export const getNotes = (currentUser) => {
     return dispatch => {
         // make async call to database
         // will have:
@@ -12,8 +12,8 @@ export const getNotes = () => {
             if(res.error) {
                 throw(res.error)
             }
-            dispatch({ type: 'GET_NOTES', notes: res.notes})
-            return res.notes
+            dispatch({ type: 'GET_NOTES', notes: res, currentUser: currentUser})
+            return res
         })
         .catch((err) => {
             dispatch({ type: 'GET_NOTES_ERROR', err})

@@ -15,8 +15,9 @@ export const signIn = (credentials) => {
             if(res.error) {
                 throw(res.error)
             }
-            dispatch({ type: 'LOGIN_SUCCESS', user: res.user})
-            return res.user
+            dispatch({ type: 'LOGIN_SUCCESS', user: res})
+            console.log(res)
+            return res
             })
             .catch((err) => {
                 dispatch({ type: 'LOGIN_ERROR', err})

@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import Notifications from './Notifications'
 import NoteList from '../notes/NoteList'
 import { connect } from 'react-redux'
-import getNotes from '../../store/actions/noteActions'
+import { getNotes } from '../../store/actions/noteActions'
 
 class Dashboard extends Component {
 
-    // componentDidMount() {
-    //     const {getNotes} = this.props
-    //     getNotes()
-    // }
+    componentDidMount() {
+        const {getNotes, currentUser} = this.props
+        getNotes(currentUser)
+    }
 
     render(){
         console.log('dash props',this.props)
@@ -33,8 +33,15 @@ class Dashboard extends Component {
 const mapStateToProps = (state) => {
     console.log('dash map state to props', state)
     return {
-        notes: state.note.notes
+        notes: state.note.notes,
+        currentUser: state.auth.currentUser
     }
 }
 
-export default connect(mapStateToProps)(Dashboard)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getNotes: (currentUser) => dispatch(getNotes(currentUser))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)
