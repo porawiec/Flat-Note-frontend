@@ -16,7 +16,8 @@ export const signIn = (credentials) => {
                 throw(res.error)
             }
             dispatch({ type: 'LOGIN_SUCCESS', user: res})
-            console.log(res)
+            // this.props.history.push('/') *************** NOT WORKING ****************
+            // console.log(res)
             return res
             })
             .catch((err) => {
@@ -29,7 +30,7 @@ export const signOut = () => {
     return (dispatch, getState) => {
 
 // setState of user to '' ?
-        fetch('http://localhost:3000/auth]')
+        fetch('http://localhost:3000/auth')
             .then((users) => {
                 dispatch({ type: 'SIGNOUT_SUCCESS', users: users})
             })

@@ -18,13 +18,19 @@ class App extends Component {
         <div className="App">
           <Navbar />
           <Switch>
-          <Route exact path='/' render={() => {
-              return currentUser.id ? < Dashboard /> : <Redirect to='/login' component={SignIn} />
+            <Route exact path='/' render={() => {
+              return currentUser.id ? < Dashboard /> : <Redirect to='/signin' component={SignIn} />
             }} />
-            <Route path='/note/:id' component={NoteDetails} />
+            <Route exact path='/note/:id' render={() => {
+              return currentUser.id ? < NoteDetails /> : <Redirect to='/signin' component={SignIn} />
+            }} />
+            {/* <Route path='/note/:id' component={NoteDetails} /> */}
+            <Route exact path='/create' render={() => {
+              return currentUser.id ? < CreateNote /> : <Redirect to='/signin' component={SignIn} />
+            }} />
+            {/* <Route path='/create' component={CreateNote} /> */}
             <Route path='/signin' component={SignIn} />
             <Route path='/signup' component={SignUp} />
-            <Route path='/create' component={CreateNote} />
           </Switch>
         </div>
       </BrowserRouter>
