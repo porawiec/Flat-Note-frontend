@@ -6,7 +6,7 @@ const NoteSummary = ({note}) => {
             <div className='card-content grey-text text-darken-3'>
                 <span className='card-title'>{note.title}</span>
                 <p>Posted by username</p> {/* dynamically render author of note */}
-                <p className='grey-text'>February 12, 2020 - 10:00pm </p> {/* dynamically render time of note */}
+                <p className='grey-text'>February 50000, 2020 - 10:00pm </p> {/* dynamically render time of note */}
             </div>
         </div>
     )

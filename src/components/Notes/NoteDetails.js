@@ -3,6 +3,10 @@ import { connect } from 'react-redux'
 
 const NoteDetails = (props) => {
     const id = props.match.params.id
+    //find note by id
+    // render title
+    // render description
+    console.log('al;sdfjk', props.note)    
 
     return (
         <div className='container section note-details'>
