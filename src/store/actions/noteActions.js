@@ -1,10 +1,5 @@
 export const getNotes = (currentUser) => {
     return dispatch => {
-        // make async call to database
-        // will have:
-        // ...note  //also is equivalent to note.title and note.description
-        // username: someusername
-        // user_id: 12345
     
         fetch('http://localhost:3000/notes')
         .then(res => res.json())
@@ -23,13 +18,8 @@ export const getNotes = (currentUser) => {
 
 
 
-export const createNote = (note) => {
+export const createNote = (note, currentUser) => {
     return (dispatch) => {
-        // make async call to database
-        // will have:
-        // ...note  //also is equivalent to note.title and note.description
-        // username: someusername
-        // user_id: 12345
 
         const reqObj = {
             method: 'POST',
@@ -38,15 +28,11 @@ export const createNote = (note) => {
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
-                ...note, 
-                user: {
-                    username: 'garbageusername',
-                    // this.props.user.username,
-                    user_id: 12345
-                    // this.props.user.user_id
-                }
+                title: note.title,
+                description: note.description,
+                user_id: currentUser.id
             })
-        }
+        }   
     
         fetch('http://localhost:3000/notes', reqObj)
             .then(res => res.json())
@@ -54,11 +40,12 @@ export const createNote = (note) => {
                 if(res.error) {
                     throw(res.error)
                 }
-            dispatch({ type: 'CREATE_NOTE', note: res.note})
+                console.log('create dispatch', res)
+            dispatch({ type: 'CREATE_NOTE', note: res})
             return res.note
         })
-            .catch((err) => {
-                dispatch({ type: 'CREATE_NOTE_ERROR', err})
+            .catch((error) => {
+                dispatch({ type: 'CREATE_NOTE_ERROR', error})
             })
         }
 }

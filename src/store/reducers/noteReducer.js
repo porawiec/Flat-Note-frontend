@@ -18,23 +18,21 @@ const noteReducer = (state = initState, action) => {
             }
 
         case 'GET_NOTES_ERROR':
-            console.log('received notes error', action.err)
+            console.log('received notes error', action.error)
             return state
 
 
         case 'CREATE_NOTE':
             console.log('created note', action.note)
-            return ([
+            return {
                 ...state,
-                {
-                    id: action.id,
-                    title: action.title,
-                    description: action.description
-                }
-            ])
+                notes: [...state.notes,
+                    action.note
+                ]
+            }
 
         case 'CREATE_NOTE_ERROR':
-            console.log('create note error', action.err)
+            console.log('create note error', action.error)
             return state
 
         default:

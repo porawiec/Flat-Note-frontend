@@ -17,8 +17,8 @@ class CreateNote extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        console.log(this.state)
-        this.props.createNote(this.state)
+        // console.log(this.state)
+        this.props.createNote(this.state, this.props.currentUser)
     }
 
 
@@ -44,10 +44,17 @@ class CreateNote extends Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
+    console.log('dash map state to props', state)
     return {
-        createNote: (note) => dispatch(createNote(note))
+        currentUser: state.auth.currentUser
     }
 }
 
-export default connect(null, mapDispatchToProps)(CreateNote)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createNote: (note, currentUser) => dispatch(createNote(note, currentUser))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateNote)
