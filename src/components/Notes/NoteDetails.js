@@ -2,25 +2,23 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 const NoteDetails = (props) => {
-    const id = props.match.params.id
-    //find note by id
-    // render title
-    // render description
-    console.log('al;sdfjk', props.note)    
-
+    console.log('note detail props', props)
+    // const id = props.routing.match.params.id
     return (
         <div className='container section note-details'>
+        {console.log('return details props', props)}
             <div className='card z-depth-0'>
                 <div className='card-content'>
                     <span className='card-title'>
-                        {props.note.title} - {id}
+                        {props.note.title} - 
+                        {/* {id} */}
                     </span>
                     <p>
                         {props.note.description}
                     </p>
                 </div>
                 <div className='card-action grey lighten-4 grey-text'>
-                    <div> Posted by Username {/* dynamic Author/Username would exist here */} </div>
+                    <div> Posted by {props.note.user.username} </div>
                     <div> February 12, 2020 - 10:00pm {/* dynamically render time of note */} </div>
             </div>
         </div>
@@ -29,11 +27,14 @@ const NoteDetails = (props) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    let id = ownProps.match.params.id
-    // const notes = this.props.notes??????
-    // const note = notes ? notes[id] : null
+    let id = parseInt(ownProps.routing.match.params.id)
+    // console.log('map state', state)
+    const notes = state.note.notes
+    // console.log('maps state notes', notes)
         return {
-            note: state.note.notes.find((note) => {return (
+            note: notes.find((note) => {
+                console.log(note.id)
+                return (
             note.id === id)}
             )
         }

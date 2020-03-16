@@ -6,10 +6,10 @@ const NoteList = ({notes}) => {
     return(
         <div className='note-list section'>
             { notes && notes.map(note => {
-                // console.log(note)
+                console.log('note', note)
                 return(
                     <Link to={'/note/' + note.id}>
-                    <NoteSummary note={note} key={note.id} />
+                        <NoteSummary note={note} key={note.id} />
                     </Link>
                 )
             }) }

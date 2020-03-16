@@ -38,6 +38,7 @@ export const createNote = (note, currentUser) => {
             .then(res => res.json())
             .then(res => {
                 if(res.error) {
+                    console.log(res)
                     throw(res.error)
                 }
                 console.log('create dispatch', res)

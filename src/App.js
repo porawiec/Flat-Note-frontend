@@ -21,8 +21,8 @@ class App extends Component {
             <Route exact path='/' render={() => {
               return currentUser.id ? < Dashboard /> : <Redirect to='/signin' component={SignIn} />
             }} />
-            <Route exact path='/note/:id' render={() => {
-              return currentUser.id ? < NoteDetails /> : <Redirect to='/signin' component={SignIn} />
+            <Route exact path='/note/:id' render={(props) => {
+              return currentUser.id ? < NoteDetails routing={props} /> : <Redirect to='/signin' component={SignIn} />
             }} />
             {/* <Route path='/note/:id' component={NoteDetails} /> */}
             <Route exact path='/create' render={() => {

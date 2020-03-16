@@ -9,8 +9,8 @@ const initState = {
 const noteReducer = (state = initState, action) => {
     switch (action.type) {
         case 'GET_NOTES':
-            console.log('received notes', action.notes)
-            console.log('current user reducer', action.currentUser)
+            // console.log('received notes', action.notes)
+            // console.log('current user reducer', action.currentUser)
             return {
                 ...state,
                 // notes: action.notes
@@ -18,7 +18,7 @@ const noteReducer = (state = initState, action) => {
             }
 
         case 'GET_NOTES_ERROR':
-            console.log('received notes error', action.error)
+            // console.log('received notes error', action.error)
             return state
 
 
