@@ -1,29 +1,44 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+const moment = require("moment");
+
 const NoteDetails = (props) => {
-    console.log('note detail props', props)
+    // console.log('note detail props', props)
     // const id = props.routing.match.params.id
-    return (
-        <div className='container section note-details'>
-        {console.log('return details props', props)}
-            <div className='card z-depth-0'>
-                <div className='card-content'>
-                    <span className='card-title'>
-                        {props.note.title} - 
-                        {/* {id} */}
-                    </span>
-                    <p>
-                        {props.note.description}
-                    </p>
+    const { note } = props
+
+    const createDate = moment(note.created_at)
+    const updateDate = moment(note.updated_at)
+
+    if (note) {
+        return(
+            <div className='container section note-details'>
+            {console.log('return details props', props)}
+                <div className='card z-depth-0'>
+                    <div className='card-content'>
+                        <span className='card-title'>
+                            {note.title}
+                            {/* {id} */}
+                        </span>
+                        <p>
+                            {note.description}
+                        </p>
+                    </div>
+                    <div className='card-action grey lighten-4 grey-text'>
+                        <div> Created: {createDate.format('MMM DD, YYYY - h:mma')} </div>
+                        <div> Updated: {updateDate.format('MMM DD, YYYY - h:mma')} </div>
+                    </div>
                 </div>
-                <div className='card-action grey lighten-4 grey-text'>
-                    <div> Posted by {props.note.user.username} </div>
-                    <div> February 12, 2020 - 10:00pm {/* dynamically render time of note */} </div>
             </div>
+        )
+    } else {
+    return (
+        <div className='container center'>
+            <p>Loading Note...</p>
         </div>
-    </div>
     )
+    }
 }
 
 const mapStateToProps = (state, ownProps) => {
