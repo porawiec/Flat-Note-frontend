@@ -9,11 +9,10 @@ const SignedInLinks = (props) => {
     console.log('signedinlinks', props)
     return(
         <ul className='right'>
-            {/* will fix navlink routing later */}
             <li><NavLink to='/create'>Create New Note</NavLink></li>
             <li><a onClick={props.signOut}>Log Out</a></li>
 
-            {/* user icon logged in initials*/}
+            {/* user icon logged in initial*/}
             <li><NavLink to='/' className='btn btn-floating cyan lighten-1'>
                 { props.currentUser.username ? props.currentUser.username.charAt(0) : null }
             </NavLink></li>
