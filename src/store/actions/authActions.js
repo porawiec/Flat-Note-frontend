@@ -1,24 +1,26 @@
 export const signIn = (credentials, props) => {
+    // console.log('sign in data', credentials, props)
     return (dispatch) => {
 
         const reqObj = {
             method: 'POST',
             headers: {
-                'Content-Type': 'Application/json',
+                'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify(credentials)
+            body: JSON.stringify({user: credentials})
         }
     
         fetch('http://localhost:3000/login', reqObj)
         .then(res => res.json())
         .then(res => {
+            // console.log('login fetch', res)
             if(res.error) {
                 throw(res.error)
             }
             dispatch({ type: 'LOGIN_SUCCESS', user: res})
+                localStorage.setItem("token", res.jwt)
                 props.history.push('/')
-            // console.log(res)
             return res
             })
             .catch((err) => {
@@ -39,7 +41,7 @@ export const signUp = (credentials, props) => {
         const reqObj = {
             method: 'POST',
             headers: {
-                'Content-Type': 'Application/json',
+                'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
             body: JSON.stringify({user: credentials})

@@ -7,7 +7,7 @@ const SignedOutLinks = () => {
         <ul className='right'>
             {/* will fix navlink routing later */}
             <li><NavLink to='/signup'>Create New Account</NavLink></li>
-            <li><NavLink to='/signin'>Sign In</NavLink></li>
+            <li><NavLink to='/login'>Sign In</NavLink></li>
         </ul>
     )
 }
