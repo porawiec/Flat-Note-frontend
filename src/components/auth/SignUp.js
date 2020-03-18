@@ -18,11 +18,12 @@ class SignUp extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         console.log(this.state)
-        this.props.signUp(this.state)
+        this.props.signUp(this.state, this.props)
     }
 
 
     render() {
+        console.log('sign up props', this.props)
         return (
             <div className='container'>
                 <form onSubmit={this.handleSubmit} className='white'>
@@ -47,7 +48,7 @@ class SignUp extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        signUp: (creds) => dispatch(signUp(creds))
+        signUp: (creds, props) => dispatch(signUp(creds, props))
     }
 }
 

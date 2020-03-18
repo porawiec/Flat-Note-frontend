@@ -17,8 +17,9 @@ class SignIn extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        console.log(this.state)
-        this.props.signIn(this.state)
+        // console.log('login state', this.state)
+        // console.log('login props', this.props)
+        this.props.signIn(this.state, this.props)
     }
 
 
@@ -57,7 +58,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        signIn: (creds) => dispatch(signIn(creds))
+        signIn: (creds, props) => dispatch(signIn(creds, props))
     }
 }
 

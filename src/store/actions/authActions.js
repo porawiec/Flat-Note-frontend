@@ -1,22 +1,23 @@
-export const signIn = (credentials) => {
-    return (dispatch, getState) => {
+export const signIn = (credentials, props) => {
+    return (dispatch) => {
 
         const reqObj = {
             method: 'POST',
             headers: {
-                'Content-Type': 'Application/json'
+                'Content-Type': 'Application/json',
+                'Accept': 'application/json'
             },
             body: JSON.stringify(credentials)
         }
     
-        fetch('http://localhost:3000/auth', reqObj)
+        fetch('http://localhost:3000/login', reqObj)
         .then(res => res.json())
         .then(res => {
             if(res.error) {
                 throw(res.error)
             }
             dispatch({ type: 'LOGIN_SUCCESS', user: res})
-            // this.props.history.push('/') *************** NOT WORKING ****************
+                props.history.push('/')
             // console.log(res)
             return res
             })
@@ -27,38 +28,34 @@ export const signIn = (credentials) => {
 }
 
 export const signOut = () => {
-    return (dispatch, getState) => {
-
-// setState of user to '' ?
-        fetch('http://localhost:3000/auth')
-            .then((users) => {
-                dispatch({ type: 'SIGNOUT_SUCCESS', users: users})
-            })
-        }
+    return (dispatch) => {
+        dispatch({ type: 'SIGNOUT_SUCCESS'})
+    }
 }
 
-export const signUp = (credentials) => {
-    return (dispatch, getState) => {
-
+export const signUp = (credentials, props) => {
+    return (dispatch) => {
+        console.log('auth action', props)
         const reqObj = {
             method: 'POST',
             headers: {
-                'Content-Type': 'Application/json'
+                'Content-Type': 'Application/json',
+                'Accept': 'application/json'
             },
-            body: JSON.stringify(credentials)
+            body: JSON.stringify({user: credentials})
         }
     
         fetch('http://localhost:3000/users', reqObj)
-        .then(res => res.json())
-        .then(res => {
-            if(res.error) {
-                throw(res.error)
-            }
+            .then(res => res.json())
+            .then(res => {
+                if(res.error) {
+                    throw(res.error)
+                }
             dispatch({ type: 'SIGN_UP_SUCCESS', user: res.user})
-            return res.user
+                props.history.push('/login')
             })
             .catch((err) => {
-                dispatch({ type: 'SIGN_UP_ERROR', err})
+                    dispatch({ type: 'SIGN_UP_ERROR', err})
             })
-        }
+    }
 }
