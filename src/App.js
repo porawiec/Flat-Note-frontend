@@ -28,11 +28,11 @@ class App extends Component {
               return localStorage.token ? < Dashboard /> : <Redirect to='/login' component={SignIn} />
             }} />
             <Route exact path='/note/:id' render={(props) => {
-              return localStorage.token? < NoteDetails routing={props} /> : <Redirect to='/login' component={SignIn} />
+              return localStorage.token ? < NoteDetails routing={props} /> : <Redirect to='/login' component={SignIn} />
             }} />
             {/* <Route path='/note/:id' component={NoteDetails} /> */}
-            <Route exact path='/create' render={() => {
-              return localStorage.token ? < CreateNote /> : <Redirect to='/login' component={SignIn} />
+            <Route exact path='/create' render={(props) => {
+              return localStorage.token ? < CreateNote routing={props}/> : <Redirect to='/login' component={SignIn} />
             }} />
             {/* <Route path='/create' component={CreateNote} /> */}
             <Route path='/login' component={SignIn} />

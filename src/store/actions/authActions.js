@@ -32,7 +32,8 @@ export const signIn = (credentials, props) => {
 
 export const signOut = () => {
     return (dispatch) => {
-        dispatch({ type: 'SIGNOUT_SUCCESS'})
+        dispatch({ type: 'SIGNOUT_SUCCESS_AUTH'})
+        dispatch({ type: 'SIGNOUT_SUCCESS_NOTE'})
         localStorage.removeItem('token')
     }
 }

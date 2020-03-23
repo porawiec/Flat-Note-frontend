@@ -36,10 +36,27 @@ const noteReducer = (state = initState, action) => {
             console.log('create note error', action.error)
             return state
 
+        case 'DELETE_NOTE':
+            console.log('deleted note', action.noteId)
+            return {
+                ...state,
+                notes: state.notes.filter(note => note.id !== action.noteId)
+            }
+
+        case 'DELETE_NOTE_ERROR':
+            console.log('delete note error', action.error)
+            return state
+
         case 'GET_PROFILE_NOTE':
             // console.log('fetch with authorization header and token')
             return {
                 notes: action.notes
+            }
+
+        case 'SIGNOUT_SUCCESS_NOTE':
+            // console.log('signout success')
+            return {
+                notes: {}
             }
 
         default:

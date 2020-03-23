@@ -18,7 +18,10 @@ class CreateNote extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         // console.log(this.state)
-        this.props.createNote(this.state, this.props.currentUser)
+        console.log(this.props)
+        this.props.createNote(this.state, this.props.currentUser.user)
+        this.props.routing.history.push('/')
+
     }
 
 
