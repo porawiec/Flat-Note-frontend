@@ -12,9 +12,10 @@ const SignedInLinks = (props) => {
             <li><NavLink to='/create'>Create New Note</NavLink></li>
             <li><a onClick={props.signOut}>Log Out</a></li>
 
-            {/* user icon logged in initial*/}
+            {/* user icon logged in initials*/}
             <li><NavLink to='/' className='btn btn-floating cyan lighten-1'>
-                { props.currentUser.username ? props.currentUser.username.charAt(0) : null }
+                
+                { props.currentUser.user ? props.currentUser.user.username.charAt(0) : null }
             </NavLink></li>
         </ul>
     )

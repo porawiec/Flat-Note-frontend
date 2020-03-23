@@ -6,12 +6,6 @@ import { getNotes } from '../../store/actions/noteActions'
 
 class Dashboard extends Component {
 
-    componentDidMount() {
-        
-        const {getNotes, currentUser} = this.props
-        getNotes(currentUser)
-    }
-
     render(){
         console.log('dash props',this.props)
         const { notes } = this.props

@@ -17,7 +17,7 @@ export const getNotes = (currentUser) => {
 }
 
 
-
+// currentUser.user.notes
 export const createNote = (note, currentUser) => {
     return (dispatch) => {
 

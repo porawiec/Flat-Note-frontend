@@ -14,7 +14,8 @@ const noteReducer = (state = initState, action) => {
             return {
                 ...state,
                 // notes: action.notes
-                notes: action.notes.filter(note => note.user_id === action.currentUser.id)
+                notes: action.notes
+                // notes: action.notes.filter(note => note.user_id === action.currentUser.id)
             }
 
         case 'GET_NOTES_ERROR':
@@ -34,6 +35,12 @@ const noteReducer = (state = initState, action) => {
         case 'CREATE_NOTE_ERROR':
             console.log('create note error', action.error)
             return state
+
+        case 'GET_PROFILE_NOTE':
+            // console.log('fetch with authorization header and token')
+            return {
+                notes: action.notes
+            }
 
         default:
             return state
