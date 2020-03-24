@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Notifications from './Notifications'
 import NoteList from '../notes/NoteList'
 import { connect } from 'react-redux'
-import { getNotes } from '../../store/actions/noteActions'
 
 class Dashboard extends Component {
 
@@ -33,10 +32,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        getNotes: (currentUser) => dispatch(getNotes(currentUser))
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)
+export default connect(mapStateToProps)(Dashboard)

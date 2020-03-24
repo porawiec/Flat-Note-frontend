@@ -7,6 +7,7 @@ import NoteDetails from './components/notes/NoteDetails'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
 import CreateNote from './components/notes/CreateNote'
+import EditNote from './components/notes/EditNote'
 import { getProfile } from './store/actions/authActions'
 
 
@@ -31,6 +32,9 @@ class App extends Component {
               return localStorage.token ? < NoteDetails routing={props} /> : <Redirect to='/login' component={SignIn} />
             }} />
             {/* <Route path='/note/:id' component={NoteDetails} /> */}
+            <Route exact path='/note/edit/:id' render={(props) => {
+              return localStorage.token ? < EditNote routing={props} /> : <Redirect to='/login' component={SignIn} />
+            }} />
             <Route exact path='/create' render={(props) => {
               return localStorage.token ? < CreateNote routing={props}/> : <Redirect to='/login' component={SignIn} />
             }} />

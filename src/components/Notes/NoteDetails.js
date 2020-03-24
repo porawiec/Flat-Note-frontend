@@ -11,12 +11,14 @@ const NoteDetails = (props) => {
     
     if (note) {
 
-    const handleDelete = (e) => {
-        e.preventDefault()
+    const handleEdit = (note) => {
+        props.routing.history.push(`/note/edit/${note.id}`)
+    }
+
+    const handleDelete = () => {
         // console.log(props)
         props.deleteNote(props.note.id)
         props.routing.history.push('/')
-
     }
 
     const createDate = moment(note.created_at)
@@ -36,9 +38,12 @@ const NoteDetails = (props) => {
                     </div>
                     <div className='card-action grey lighten-4 grey-text'>
                         <div className='row'>
-                            <div className='col s10'>
+                            <div className='col s9'>
                                 <div> Created: {createDate.format('MMM DD, YYYY - h:mma')} </div>
                                 <div> Updated: {updateDate.format('MMM DD, YYYY - h:mma')} </div>
+                            </div>
+                            <div className='col s1'>
+                                <a onClick={() => handleEdit(note)} className='waves-effect waves-light btn-small'>Edit</a>
                             </div>
                             <div className='col s1'>
                                 <a onClick={handleDelete} className='waves-effect waves-light btn-small'>Delete</a>
