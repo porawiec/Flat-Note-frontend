@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 class Dashboard extends Component {
 
     render(){
-        console.log('dash props',this.props)
+        // console.log('dash props',this.props)
         const { notes } = this.props
 
         return(
@@ -25,7 +25,7 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log('dash map state to props', state)
+    // console.log('dash map state to props', state)
     return {
         notes: state.note.notes,
         currentUser: state.auth.currentUser

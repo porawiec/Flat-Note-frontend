@@ -40,7 +40,7 @@ export const signOut = () => {
 
 export const signUp = (credentials, props) => {
     return (dispatch) => {
-        console.log('auth action', props)
+        // console.log('sign up action', props)
         const reqObj = {
             method: 'POST',
             headers: {
@@ -88,7 +88,7 @@ export const getProfile = () => {
         if (!userObj.error) {
             dispatch({ type: 'GET_PROFILE_AUTH', currentUser: userObj.user})
             dispatch({ type: 'GET_PROFILE_NOTE', notes: userObj.user.notes})
-            console.log('do things profile fetch', userObj.user)
+            // console.log('profile fetch', userObj.user)
 
         } else {
             alert(userObj.error)

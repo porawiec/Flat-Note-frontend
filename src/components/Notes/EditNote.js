@@ -4,15 +4,35 @@ import { getCurrentNote } from '../../store/actions/noteActions'
 import { editNote } from '../../store/actions/noteActions'
 
 class EditNote extends Component {
+    constructor (props) {
+        super(props)
+        console.log('constructor', props)
+
+        if (props.currentNote) {
+        this.state = {
+            title: props.currentNote.title,
+            description: props.currentNote.description
+        }
+    } else {
+        this.state = {
+            title: '',
+            description: ''
+        }
+    }
+    }
     
     componentDidMount = () => {
         const noteId = parseInt(this.props.routing.match.params.id)
         this.props.getCurrentNote(noteId)
     }
-    
-    state = {
-        title: '',
-        description: ''
+
+    componentDidUpdate = (prevProps, prevState) => {
+        if (!prevProps.currentNote && prevState.title === '') {
+            this.setState({
+                title: this.props.currentNote.title,
+                description: this.props.currentNote.description
+            })
+        }
     }
     
     handleChange = (e) => {
@@ -37,18 +57,17 @@ class EditNote extends Component {
     render() {
         // const editId = parseInt(this.props.routing.match.params.id)
         // const note = this.props.notes.find(note => note.id === editId)
-        const { currentNote } = this.props
         return (
             <div className='container'>
                 <form onSubmit={this.handleSubmit} className='white'>
                     <h5 className='grey-text text-darken-3'>Edit Your Note</h5>
                     <div className='input-field'>
                         <span>Title</span>
-                        <input name="whatever" type='text' id='title' onChange={this.handleChange}></input>
+                        <input value={this.state.title} name="whatever" type='text' id='title' onChange={this.handleChange}></input>
                     </div>
                     <div className='input-field'>
                     <span>Description</span>
-                        <textarea id='description' className='materialize-textarea' onChange={this.handleChange}></textarea>
+                        <textarea value={this.state.description} id='description' className='materialize-textarea' onChange={this.handleChange}></textarea>
                     </div>
                     <div className='input-field'>
                         <button className='btn cyan lighten-1'>Edit</button>
@@ -60,9 +79,8 @@ class EditNote extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log('dash map state to props', state)
+    // console.log('dash map state to props', state)
     return {
-        currentUser: state.auth.currentUser,
         notes: state.note.notes,
         currentNote: state.note.currentNote
     }

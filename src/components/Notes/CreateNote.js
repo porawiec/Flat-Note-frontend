@@ -32,11 +32,11 @@ class CreateNote extends Component {
                     <h5 className='grey-text text-darken-3'>Create New Note</h5>
                     <div className='input-field'>
                         <label htmlFor='title'>Title</label>
-                        <input type='text' id='title' onChange={this.handleChange}></input>
+                        <input value={this.state.title} type='text' id='title' onChange={this.handleChange}></input>
                     </div>
                     <div className='input-field'>
                         <label htmlFor='description'>Description</label>
-                    <textarea id='description' className='materialize-textarea' onChange={this.handleChange}></textarea>
+                    <textarea value={this.state.description} id='description' className='materialize-textarea' onChange={this.handleChange}></textarea>
                     </div>
                     <div className='input-field'>
                         <button className='btn cyan lighten-1'>Create</button>

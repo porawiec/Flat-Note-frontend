@@ -1,10 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { deleteNote } from '../../store/actions/noteActions'
+import { getCurrentNote } from '../../store/actions/noteActions'
 
 const moment = require("moment");
 
 const NoteDetails = (props) => {
+
+    const noteId = parseInt(props.routing.match.params.id)
+    props.getCurrentNote(noteId)
+
     // console.log('note detail props', props)
     // const id = props.routing.match.params.id
     const { note } = props
@@ -79,7 +84,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        deleteNote: (noteId) => dispatch(deleteNote(noteId))
+        deleteNote: (noteId) => dispatch(deleteNote(noteId)),
+        getCurrentNote: (noteId) => dispatch(getCurrentNote(noteId))
+
     }
 }
 

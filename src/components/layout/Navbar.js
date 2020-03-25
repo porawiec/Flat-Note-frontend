@@ -5,9 +5,8 @@ import SignedOutLinks from './SignedOutLinks'
 import { connect } from 'react-redux'
 
 const Navbar = (props) => {
-
-    console.log('navbar', props) 
-
+    // console.log('navbar', props)
+    
     return(
         <nav className='nav-wrapper grey darken-3'>
             <div className='container'>
