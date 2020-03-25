@@ -44,7 +44,7 @@ class EditNote extends Component {
                     <h5 className='grey-text text-darken-3'>Edit Your Note</h5>
                     <div className='input-field'>
                         <span>Title</span>
-                        <input type='text' id='title' onChange={this.handleChange}></input>
+                        <input name="whatever" type='text' id='title' onChange={this.handleChange}></input>
                     </div>
                     <div className='input-field'>
                     <span>Description</span>

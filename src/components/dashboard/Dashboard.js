@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Notifications from './Notifications'
+import PinnedNote from './PinnedNote'
 import NoteList from '../notes/NoteList'
 import { connect } from 'react-redux'
 
@@ -16,7 +16,7 @@ class Dashboard extends Component {
                         <NoteList notes={notes} />
                     </div>
                     <div className='col s12 m5 offset-m1'>
-                        <Notifications />
+                        <PinnedNote notes={notes} />
                     </div>
                 </div>
             </div>
