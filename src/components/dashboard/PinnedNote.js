@@ -26,8 +26,12 @@ const PinnedNote = ({notes}) => {
 
 } else {
     return(
-        <div className='container center'>
-            <p>No Pinned Notes</p>
+        <div className='section'>
+            <div className='card z-depth-0'>
+                <div className='card-content'>
+                    <span className='card-title center'>No Pinned Note</span>
+                </div>
+            </div>
         </div>
     )
 }
